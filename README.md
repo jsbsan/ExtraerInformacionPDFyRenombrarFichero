@@ -1,2 +1,3 @@
-# ExtraerInformacionPDFyRenombrarFichero
-Extrae el texto de un fichero pdf y con la información extraída es usada para cambiar el nombre del fichero
+# Extraer Informacion PDF y Renombrar Fichero
+
+Ejemplo de uso del comando "pdftotext" que extrae el texto de un fichero .PDF, lo analiza y crea una copia renombrandolo con el texto extraido.

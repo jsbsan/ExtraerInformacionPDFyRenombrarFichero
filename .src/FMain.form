@@ -1,0 +1,17 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,111,64)
+  { Label1 Label
+    MoveScaled(5,3,23,4)
+    Text = ("Directorio de trabajo:")
+  }
+  { TextBoxRutaDirectorioTrabajo TextBox
+    MoveScaled(1,9,107,5)
+    Text = ("/home/minino/Documentos/00 trabajos/04 CAMINOS CHG/EXTRA Caminos Sevilla para Guardia Civil/pdf de los caminos")
+  }
+  { Button1 Button
+    MoveScaled(5,20,14,6)
+    Text = ("Operar")
+  }
+}

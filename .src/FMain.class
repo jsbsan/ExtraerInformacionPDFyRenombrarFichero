@@ -1,0 +1,40 @@
+' Gambas class file
+
+Public Sub Button1_Click()
+
+  Dim t As String
+  Dim ruta As String = TextBoxRutaDirectorioTrabajo.Text
+  Dim lista As New String[]
+  Dim texto As String
+  Dim contador As Integer = 0
+  'obtener el listado de fichero pdf del directorio indicado
+
+  For Each t In Dir(ruta, "*.pdf")
+    lista.Add(t)
+  Next
+
+  Print "Listado:"
+  For Each t In lista
+    Print t
+  Next
+
+  '2º paso, por cada fichero pdf encontrado pasarlo a texto
+  For Each t In lista
+    Shell "pdftotext -layout '" & ruta & "/" & t & "' " & "'" & ruta & "/" & "txt.txt'"
+    Wait 0.1
+    texto = File.Load(ruta & "/txt.txt")
+    texto = Replace(texto, "Denominación: ", "")
+    texto = Replace(texto, "\n\x0C", "")
+    texto = Replace(texto, " ", "_")
+    Print texto
+
+    If Exist(ruta & "/" & texto) Then
+      contador += 1
+      Copy ruta & "/" & t To ruta & "/renombrado/" & texto & "_" & Str$(contador) & ".pdf"
+    Else
+      Try Copy ruta & "/" & t To ruta & "/renombrado/" & texto & ".pdf"
+    Endif
+
+  Next
+
+End
